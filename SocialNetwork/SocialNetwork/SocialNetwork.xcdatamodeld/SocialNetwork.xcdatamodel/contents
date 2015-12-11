@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BaseEntity" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CommentEntity" syncable="YES">
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostEntity" inverseName="comments" inverseEntity="PostEntity" syncable="YES"/>
+    </entity>
+    <entity name="GroupEntity" syncable="YES">
+        <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PostEntity" inverseName="group" inverseEntity="PostEntity" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="groups" inverseEntity="UserEntity" syncable="YES"/>
+    </entity>
+    <entity name="PostEntity" syncable="YES">
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CommentEntity" inverseName="post" inverseEntity="CommentEntity" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupEntity" inverseName="posts" inverseEntity="GroupEntity" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="posts" inverseEntity="UserEntity" syncable="YES"/>
+    </entity>
+    <entity name="ShoppingCartEntity" syncable="YES">
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="shoppingCarts" inverseEntity="UserEntity" syncable="YES"/>
+    </entity>
+    <entity name="UserEntity" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="iconLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="job" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupEntity" inverseName="users" inverseEntity="GroupEntity" syncable="YES"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PostEntity" inverseName="user" inverseEntity="PostEntity" syncable="YES"/>
+        <relationship name="shoppingCarts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShoppingCartEntity" inverseName="user" inverseEntity="ShoppingCartEntity" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GroupEntity" positionX="-54" positionY="-9" width="128" height="88"/>
+        <element name="UserEntity" positionX="-441" positionY="27" width="128" height="178"/>
+        <element name="PostEntity" positionX="-261" positionY="306" width="128" height="88"/>
+        <element name="CommentEntity" positionX="-47" positionY="374" width="128" height="58"/>
+        <element name="ShoppingCartEntity" positionX="-297" positionY="-99" width="128" height="58"/>
+        <element name="BaseEntity" positionX="-216" positionY="180" width="128" height="75"/>
+    </elements>
 </model>

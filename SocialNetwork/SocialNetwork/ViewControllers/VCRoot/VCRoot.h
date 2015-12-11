@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  VCRoot.h
 //  SocialNetwork
 //
 //  Created by ATam on 12/10/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface VCRoot : UIViewController
 
 @end
-
